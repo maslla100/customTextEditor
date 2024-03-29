@@ -17,17 +17,22 @@ const loadSpinner = () => {
   main.appendChild(spinner);
 };
 
-const editor = new Editor();
-
-if (typeof editor === 'undefined') {
+try {
+  const editor = new Editor();
+  // Any additional setup or function calls related to the editor
+} catch (error) {
+  console.error("Failed to initialize the editor:", error);
   loadSpinner();
 }
+
 
 // Check if service workers are supported
 if ('serviceWorker' in navigator) {
   // register workbox service worker
   const workboxSW = new Workbox('/src-sw.js');
-  workboxSW.register();
-} else {
-  console.error('Service workers are not supported in this browser.');
-}
+  workboxSW.register().then(() => {
+    console.log('Service worker registered successfully');
+  }).catch((error) => {
+    console.error('Service worker registration failed:', error);
+  });
+};
