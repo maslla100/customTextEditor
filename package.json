@@ -4,14 +4,15 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start:dev": "",
-    "start": "concurrently \"npm:server\" \"npm:client\"",
+    "start": "concurrently \"npm run server\" \"npm run client\"",
     "server": "node server/server.js",
-    "client": "npx webpack --config client/webpack.config.js --watch",
-    "build": "",
+    "client": "webpack --config client/webpack.config.js --watch",
+    "build:client": "cd client && npm run build",
+    "start:dev": "concurrently \"npm run server\" \"npm run client\"",
     "install:client": "cd client && npm install",
     "install:server": "cd server && npm install",
-    "install:all": "npm run install:client && npm run install:server"
+    "install:all": "npm run install:client && npm run install:server",
+    "postinstall": "npm run install:all"
   },
   "keywords": [],
   "author": "",
