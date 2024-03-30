@@ -9,7 +9,9 @@
     "server": "node server/server.js",
     "client": "npx webpack --config client/webpack.config.js --watch",
     "build": "",
-    "install": ""
+    "install:client": "cd client && npm install",
+    "install:server": "cd server && npm install",
+    "install:all": "npm run install:client && npm run install:server"
   },
   "keywords": [],
   "author": "",
