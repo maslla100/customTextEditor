@@ -1,6 +1,6 @@
+import './database';
 import { Workbox } from 'workbox-window';
 import Editor from './editor';
-import './database';
 import '../css/style.css';
 
 const main = document.querySelector('#main');
@@ -29,7 +29,7 @@ try {
 // Check if service workers are supported
 if ('serviceWorker' in navigator) {
   // register workbox service worker
-  const workboxSW = new Workbox('/src-sw.js');
+  const workboxSW = new Workbox('service-worker.js');
   workboxSW.register().then(() => {
     console.log('Service worker registered successfully');
   }).catch((error) => {
